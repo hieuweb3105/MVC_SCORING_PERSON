@@ -5,6 +5,7 @@
 # [MODEL]
 model('public','badge');
 model('public','person');
+model('public','score');
 
 # [DATA]
 $data = [

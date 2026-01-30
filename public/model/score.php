@@ -70,3 +70,14 @@ function score_show_board() {
         ORDER BY badge_count DESC, latest_record DESC;'
     );
 }
+
+function score_check_guest_vote($id_person) {
+    return pdo_query_value(
+        'SELECT b.name_badge
+        FROM score s
+        JOIN badge b
+        ON b.id_badge = s.id_badge
+        WHERE s.token_guest = ? AND s.id_person = ?'
+        ,$_COOKIE['token_guest'], $id_person
+    );
+}

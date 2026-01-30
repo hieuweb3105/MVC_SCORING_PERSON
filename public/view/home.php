@@ -4,6 +4,9 @@
     <div class="col-8 col-md-4 col-lg-2 p-1 rounded-3 border border-light bg-light-40 blur-6 animate__animated animate__flipInY">
         <img class="w-100 rounded-3" src="<?= URL_A . $person['image_person'] ?>" alt="<?= $person['name_person'] ?>">
     </div>
+    <?php if(!BOOL_MORE_VOTE) $value_voted = score_check_guest_vote($person['id_person']);
+      if(!$value_voted) :
+    ?>
     <div class="col-12 text-light-80 fw-bold my-2 text-center">
         Mô tả đúng nhất về Boss này là gì nhỉ?
     </div>
@@ -16,19 +19,23 @@
         </div>
         <?php endforeach ?>
     </div>
+    <?php else : ?>
+    <div class="col-12 text-light-80 my-2 text-center d-flex align-items-center justify-content-center gap-2">
+        <span class="">Bạn đã bình chọn  danh hiệu</span> : <div class="btn btn-outline-light"><?= $value_voted ?></div>
+    </div>
+    <?php endif ?>
 </div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="modalConfirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content bg-dark-40 blur-6 text-light">
+      <div class="modal-header justify-content-center ">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Xác nhận chấm kết quả</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        Kết quả bạn bình chọn <span id="show_badge"></span>
+      <div class="modal-body text-center py-4">
+        Kết quả bạn muốn bình chọn : <span class="p-2 bg-light-80 text-dark rounded-5 small blur-6" id="show_badge"></span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
