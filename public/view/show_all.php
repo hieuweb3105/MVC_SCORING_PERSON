@@ -11,8 +11,8 @@
                 <img height="190" src="<?= URL_A . $image_person ?>" alt="" class="rounded-3" title="Hình ảnh thí sinh">
             </div>
             <div class="btn btn-outline-light">
-                <span>Danh hiệu của bạn</span>
-                <span class="text-light-80 small"> - 12 vote</span>
+                <span><?= $name_badge ?></span>
+                <span class="text-light-80 small"> - <?= $badge_count ?> <i class="bi bi-heart-fill text-danger ms-1"></i></span>
             </div>
         </div>
     <?php endforeach ?>

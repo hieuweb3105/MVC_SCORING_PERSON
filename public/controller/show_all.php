@@ -9,7 +9,7 @@ model('public','badge');
 
 # [DATA]
 $data = [
-    'list_person' => person_get_all()
+    'list_person' => score_show_board()
 ];
 
 # [RENDER]
