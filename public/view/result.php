@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="<?= URL_P_V ?>css/home.css">
+
+<div class="d-flex flex-column gap-2 gap-md-3 gap-lg-4 align-items-center justify-content-center py-3">
+    <div class="p-1 rounded-3 border border-light bg-light-40 blur-6 animate__animated animate__flipInY">
+        <img width="160" class="rounded-1" src="<?= URL_A . $person['image_person'] ?>" alt="<?= $person['name_person'] ?>">
+    </div>
+    <div class="d-flex flex-wrap justify-content-center px-lg-5">
+        <?php foreach ($list_badge as $badge) : ?>
+        <div class="col-6 px-1 px-md-2 mt-3">
+            <button type="button" class="btn btn-outline-light w-100 justify-content-between">
+                <div id="width-badge" class="bg-value rounded-start-4"></div>
+                <span><?= $badge['name_badge'] ?></span><span class="text-light-60" id="count-id-badge-<?= $badge['id_badge']?>"> 0 lượt vote</span>
+            </button>
+        </div>
+        <?php endforeach ?>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        const personId = "<?= $person['id_person'] ?>";
+        const apiUrl = `/result/${personId}/api`;
+
+        function updatePollResults() {
+            $.ajax({
+                url: apiUrl,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === "200 - OK") {
+                        const totalCount = response.count; // Tổng số lượt vote (ví dụ: 11)
+                        const data = response.data;
+
+                        // Duyệt qua từng badge trong dữ liệu trả về
+                        data.forEach(function(item) {
+                            // 1. Cập nhật con số hiển thị
+                            // Tìm đúng ID: #count-id-badge-4, #count-id-badge-5...
+                            const countSpan = $(`#count-id-badge-${item.id_badge}`);
+                            if (countSpan.length) {
+                                countSpan.text(`${item.count_badge ?? 0} lượt vote`);
+                            }
+
+                            // 2. Cập nhật độ rộng thanh progress (width-badge)
+                            // Tìm div #width-badge nằm cùng trong button đó
+                            const percentage = (item.count_badge / totalCount) * 100;
+                            const progressBar = countSpan.closest('button').find('.bg-value');
+                            
+                            if (progressBar.length) {
+                                progressBar.css('width', percentage + '%');
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Lỗi khi lấy dữ liệu API:", error);
+                }
+            });
+        }
+
+        // Chạy lần đầu tiên ngay khi load trang
+        updatePollResults();
+
+        // Thiết lập chạy lặp lại mỗi 2000ms (2 giây)
+        setInterval(updatePollResults, 2000);
+    });
+</script>

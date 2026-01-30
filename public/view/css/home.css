@@ -1,0 +1,9 @@
+.bg-value {
+    background: linear-gradient(to right,#b1b918,#b9a318);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 0;
+    height: 100%;
+}

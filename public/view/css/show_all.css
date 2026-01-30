@@ -1,0 +1,31 @@
+.score-value {
+    font-size: 20vw;
+    color: #acb25a;
+}
+
+.text-score {
+    color: #acb25a;
+    top: 10vh;
+    right: 0;
+}
+
+@media (max-width:1199px) {
+    .score-value {
+        font-size: 50vw;
+    }
+}
+
+.progress-group {
+    width: 100%;
+    height: 20px;
+    background-color: var(--bs-gold-blur);
+    position: relative;
+}
+
+.progress-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--bs-gold);
+    height: 20px;
+}

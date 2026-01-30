@@ -1,0 +1,37 @@
+.btn-score {
+    width: 88px;
+    height: 88px;
+    font-size: 24px;
+    color: var(--bs-gold) !important;
+    border-color: var(--bs-gold) !important;
+    transition: calc(.5s);
+}
+
+.show-score {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+@media (max-width:1199px) {
+    .btn-score {
+        width: 46px;
+        height: 46px;
+        font-size: 16px;
+    }
+    .show-score {
+        font-size: 24px;
+    }
+}
+
+.btn-score:hover, .btn-score:focus, .btn-score:active {
+    color: var(--bs-gold) !important;
+    border-color: var(--bs-gold) !important;
+    background: var(--bs-gold-blur);
+    transition: calc(.5s);
+}
+
+.bg-modal {
+    background-color: var(--bs-dark-20);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--bs-light-40);
+}
