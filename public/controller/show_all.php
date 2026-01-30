@@ -1,5 +1,8 @@
 <?php
 
+# [AUTHOR]
+if($_SESSION['btc'] !== 'veriffy') route();
+
 # [MODEL]
 model('public','score');
 model('public','person');

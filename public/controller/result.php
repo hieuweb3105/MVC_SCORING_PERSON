@@ -1,5 +1,8 @@
 <?php
 
+# [AUTHOR]
+if($_SESSION['btc'] !== 'veriffy') route();
+
 # [MODEL]
 model('public','score');
 model('public','person');
@@ -15,6 +18,7 @@ if(get_action_uri(1)) {
     // validate
     if(!$get_person) view_error(400);
 }
+else view_error(400);
 
 // Case : get api
 if(get_action_uri(2) === 'api') {
