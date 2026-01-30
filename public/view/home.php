@@ -5,7 +5,7 @@
         <img class="w-100 rounded-3" src="<?= URL_A . $person['image_person'] ?>" alt="<?= $person['name_person'] ?>">
     </div>
     <div class="col-12 text-light-80 fw-bold my-2 text-center">
-        Chọn phần chấm cho thí sinh này
+        Mô tả đúng nhất về Boss này là gì nhỉ?
     </div>
     <div class="d-flex flex-wrap justify-content-center">
         <?php foreach ($list_badge as $badge) : ?>
