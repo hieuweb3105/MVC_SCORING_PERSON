@@ -24,3 +24,16 @@ function score_count_one_person($id_person) {
         ,$id_person
     );
 }
+
+function score_reset_all() {
+    pdo_execute(
+        'DELETE FROM score'
+    );
+}
+
+function score_reset_by_id($id_person) {
+    pdo_execute(
+        'DELETE FROM score WHERE id_person = ?'
+        ,$id_person
+    );
+}

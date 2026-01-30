@@ -1,3 +1,7 @@
+button {
+    position: relative;
+    overflow: hidden;
+}
 .bg-value {
     background: linear-gradient(to right,#b1b918,#b9a318);
     position: absolute;

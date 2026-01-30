@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= URL_P_V ?>css/home.css">
+<link rel="stylesheet" href="<?= URL_P_V ?>css/home.css?v=1.0.1">
 
 <div class="d-flex flex-column gap-2 gap-md-3 gap-lg-4 align-items-center justify-content-center py-3">
     <div class="p-1 rounded-3 border border-light bg-light-40 blur-6 animate__animated animate__flipInY">

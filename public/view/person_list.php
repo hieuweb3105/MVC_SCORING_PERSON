@@ -7,6 +7,7 @@
         <table class="table table-dark table-hover">
         <thead>
             <tr class="align-middle">
+                <th class="bg-dark-80 blur-6">ID</th>
                 <th class="bg-dark-80 blur-6">Thí sinh</th>
                 <th class="text-c bg-dark-80 blur-6">Trạng Thái</th>
                 <th class="text-center bg-dark-80 blur-6">Lượt Vote</th>
@@ -18,6 +19,9 @@
             extract($person);
             ?>
                 <tr class="align-middle fw-light">
+                    <th class="fw-light bg-dark-80 blur-6 col-1">
+                        <?= $id_person ?>
+                    </th>
                     <th class="fw-light bg-dark-80 blur-6 col-1">
                         <img class="w-100" src="<?= URL_A . $image_person ?>" alt="<?= $name_person ?>">
                     </th>
