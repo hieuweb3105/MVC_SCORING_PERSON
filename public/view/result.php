@@ -16,7 +16,6 @@
     </div>
 </div>
 
-
 <script>
     $(document).ready(function() {
         const personId = "<?= $person['id_person'] ?>";
@@ -29,27 +28,32 @@
                 dataType: 'json',
                 success: function(response) {
                     if (response.status === "200 - OK") {
-                        const totalCount = response.count; // Tổng số lượt vote (ví dụ: 11)
-                        const data = response.data;
+                        const totalCount = response.count || 0;
+                        const data = response.data || [];
 
-                        // Duyệt qua từng badge trong dữ liệu trả về
-                        data.forEach(function(item) {
-                            // 1. Cập nhật con số hiển thị
-                            // Tìm đúng ID: #count-id-badge-4, #count-id-badge-5...
-                            const countSpan = $(`#count-id-badge-${item.id_badge}`);
-                            if (countSpan.length) {
-                                countSpan.text(`${item.count_badge ?? 0} lượt vote`);
-                            }
+                        // BƯỚC 1: RESET TẤT CẢ VỀ 0
+                        // Tìm tất cả các span có ID bắt đầu bằng count-id-badge-
+                        $('[id^="count-id-badge-"]').text("0 lượt vote");
+                        // Reset tất cả thanh progress về 0%
+                        $('.bg-value').css('width', '0%');
 
-                            // 2. Cập nhật độ rộng thanh progress (width-badge)
-                            // Tìm div #width-badge nằm cùng trong button đó
-                            const percentage = (item.count_badge / totalCount) * 100;
-                            const progressBar = countSpan.closest('button').find('.bg-value');
-                            
-                            if (progressBar.length) {
-                                progressBar.css('width', percentage + '%');
-                            }
-                        });
+                        // BƯỚC 2: CẬP NHẬT DỮ LIỆU TỪ API (Nếu có)
+                        if (totalCount > 0 && data.length > 0) {
+                            data.forEach(function(item) {
+                                const countSpan = $(`#count-id-badge-${item.id_badge}`);
+                                if (countSpan.length) {
+                                    // Cập nhật text
+                                    countSpan.text(`${item.count_badge} lượt vote`);
+                                    
+                                    // Cập nhật thanh progress
+                                    const percentage = (item.count_badge / totalCount) * 100;
+                                    const progressBar = countSpan.closest('button').find('.bg-value');
+                                    if (progressBar.length) {
+                                        progressBar.css('width', percentage + '%');
+                                    }
+                                }
+                            });
+                        }
                     }
                 },
                 error: function(xhr, status, error) {
@@ -58,10 +62,7 @@
             });
         }
 
-        // Chạy lần đầu tiên ngay khi load trang
         updatePollResults();
-
-        // Thiết lập chạy lặp lại mỗi 2000ms (2 giây)
         setInterval(updatePollResults, 2000);
     });
 </script>
