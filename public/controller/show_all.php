@@ -12,5 +12,10 @@ $data = [
     'list_person' => score_show_board()
 ];
 
+if(!$data['list_person']) {
+    toast_create('failed','Danh sách SHOW ALL hiện trống !');
+    route('btc');
+}
+
 # [RENDER]
 view('public','show_all','Công Bố Kết quả',$data);
