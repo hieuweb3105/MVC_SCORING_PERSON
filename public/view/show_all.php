@@ -1,31 +1,20 @@
 <link rel="stylesheet" href="<?= URL_P_V ?>css/show_all.css?v=1.0.1">
-<div style="margin-top:15vh" class="row mx-0 justify-content-center align-items-center">
+<div style="margin-top:" class="row mx-0 justify-content-center align-items-center">
     
 <div style="color:#acb25a" class="display-5 fw-bold text-center">
-    Scoreboard
+    Bảng công bố
 </div>
-    <div class="col-12 col-md-8 mt-lg-5">
-        <table class="table text-light">
-            <thead>
-                <tr>
-                    <th class="bg-dark-80 blur-6 text-light border-0 fw-light">Name</th>
-                    <th class="bg-dark-80 blur-6 text-light border-0 fw-light col-5">Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($list_show as $show): ?>
-                    <tr class="align-middle fs-5">
-                        <td class="bg-dark-80 blur-6 text-light border-0" class="fw-light"><?= $show['name_show_event'] ?>
-                        </td>
-                        <td class="bg-dark-80 blur-6 text-light border-0">
-                            <div class="progress-group">
-                                <div style="width:<?= get_average_score($show['id_show_event']) ?>%" class="progress-line">
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
+    <div class="d-flex flex-wrap justify-content-evenly">
+    <?php foreach ($list_person as $person) : extract($person) ?>
+        <div class="col-2 d-flex flex-column align-items-center gap-2 mt-4">
+            <div class="bg-light-60 blur-6 p-1 rounded-3 border-1">
+                <img height="190" src="<?= URL_A . $image_person ?>" alt="" class="rounded-3" title="Hình ảnh thí sinh">
+            </div>
+            <div class="btn btn-outline-light">
+                <span>Danh hiệu của bạn</span>
+                <span class="text-light-80 small"> - 12 vote</span>
+            </div>
+        </div>
+    <?php endforeach ?>
     </div>
 </div>
