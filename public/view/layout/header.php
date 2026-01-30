@@ -42,7 +42,7 @@
             <a href="/btc" class="btn btn-sm btn-outline-light"> <i class="bi bi-list"></i> <span class="d-none d-lg-block">List Show</span></a>
             <a href="/" class="btn btn-sm btn-outline-light"> <i class="bi bi-house"></i> <span class="d-none d-lg-block">Home</span></a>
         <?php else: ?>
-            <a <?= !($page == 'home') ?: 'hidden' ?> href="/" class="btn btn-sm btn-outline-light"> <i class="bi bi-house"></i>
+            <a <?= !($page == 'home' || $page == 'home_loading') ?: 'hidden' ?> href="/" class="btn btn-sm btn-outline-light"> <i class="bi bi-house"></i>
                 Home</a>
         <?php endif ?>
     </div>

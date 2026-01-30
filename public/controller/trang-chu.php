@@ -13,4 +13,7 @@ $data = [
 ];
 
 # [RENDER]
+// Chưa mở bình chọn
+if(!$data['person']) view('public','home_loading','Bình chọn thí sinh',$data);
+     
 view('public','home','Bình chọn thí sinh',$data);

@@ -16,6 +16,28 @@ if(isset($_POST['admin_verify']) && $_POST['admin_verify']) {
     }else toast_create('failed','Xác thực thất bại !');
 }
 
+// Case : Mở bình chọn
+if(get_action_uri(1) == 'open' && get_action_uri(2)) {
+    // input
+    $id_person = get_action_uri(2);
+    // update
+    person_update_state('open',$id_person);
+    // route
+    toast_create('success','Mở bình chọn thành công !');
+    route('btc');
+}
+
+// Case : Đóng bình chọn
+if(get_action_uri(1) == 'close' && get_action_uri(2)) {
+    // input
+    $id_person = get_action_uri(2);
+    // update
+    person_update_state('close',$id_person);
+    // route
+    toast_create('success','Đóng bình chọn thành công !');
+    route('btc');
+}
+
 // Site verify
 if($_SESSION['btc'] !== 'verify') view('public','btc_verify','Xác thực',null);
 

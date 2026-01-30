@@ -8,13 +8,6 @@ function score_save($id_person,$id_badge) {
     );
 }
 
-function score_count_turn($id_person) {
-    pdo_query_value(
-        'SELECT COUNT(id_score) FROM score WHERE id_person = ?'
-        ,$id_person
-    );
-}
-
 function score_with_one_person($id_person) {
     return pdo_query(
         'SELECT id_badge, COUNT(id_badge) AS count_badge

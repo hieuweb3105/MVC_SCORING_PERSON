@@ -32,13 +32,13 @@
                             <?php endif ?>
                         </div>
                     </td>
-                    <td class="text-center bg-dark-80 blur-6"><?= score_count_turn($id_person) ?? 0 ?></td>
+                    <td class="text-center bg-dark-80 blur-6"><?= score_count_one_person($id_person) ?? 0 ?></td>
                     <td class="text-end bg-dark-80 blur-6">
                         <div class="d-flex justify-content-end flex-column flex-lg-row">
                             <?php if($active_person) : ?>
-                            <a href="btc/close_show/<?= $id_person ?>" class="btn btn-sm btn-outline-light w-100 ms-2 px-0" title="Tạm dừng chấm điểm"><i class="bi bi-pause"></i> <span class="d-none d-md-block">Đóng</span><a>
+                            <a href="btc/close/<?= $id_person ?>" class="btn btn-sm btn-outline-light w-100 ms-2 px-0" title="Tạm dừng chấm điểm"><i class="bi bi-pause"></i> <span class="d-none d-md-block">Đóng</span><a>
                             <?php else : ?>
-                            <a href="btc/open_show/<?= $id_person ?>" class="btn btn-sm btn-outline-light w-100 ms-2 px-0" title="Tiếp tục chấm điểm"><i class="bi bi-play"></i> <span class="d-none d-md-block">Mở</span></a>
+                            <a href="btc/open/<?= $id_person ?>" class="btn btn-sm btn-outline-light w-100 ms-2 px-0" title="Tiếp tục chấm điểm"><i class="bi bi-play"></i> <span class="d-none d-md-block">Mở</span></a>
                             <?php endif ?>
                             <a href="/result/<?= $id_person ?>" class="btn btn-sm btn-outline-light w-100 ms-2 px-0" title="Trình chiếu điểm"><i class="bi bi-easel"></i> <span class="d-none d-md-block">Trình chiếu</span></a>
                         </div>
