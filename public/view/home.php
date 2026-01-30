@@ -23,6 +23,9 @@
     <div class="col-12 text-light-80 my-2 text-center d-flex align-items-center justify-content-center gap-2">
         <span class="">Bạn đã bình chọn  danh hiệu</span> : <div class="btn btn-outline-light"><?= $value_voted ?></div>
     </div>
+    <a href="/" class="btn btn-sm btn-outline-light mt-5">
+        <i class="bi bi-arrow-clockwise me-1"></i> Cập nhật lại trang
+    </a>
     <?php endif ?>
 </div>
 
