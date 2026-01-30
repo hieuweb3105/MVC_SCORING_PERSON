@@ -62,8 +62,8 @@ function score_show_board() {
                 ) as rnk
             FROM BadgeCounts
         )
-        SELECT rB.*, p.image_person
-        FROM RankedBadges rB
+        SELECT rb.*, p.image_person
+        FROM RankedBadges rb
         JOIN person p
         ON rb.id_person = p.id_person
         WHERE rnk = 1
